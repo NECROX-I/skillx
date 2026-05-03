@@ -4,7 +4,7 @@ import { sessionApi, ratingApi } from '../api/index'
 import { useAuthStore } from '../store/authStore'
 import { useNotificationStore } from '../store/notificationStore'
 import { Avatar, StarRating, Modal } from '../components/common/index'
-import { IconCheck, IconX, IconChat } from '../components/common/AppLayout'
+import EmptyState from '../components/common/EmptyState'
 import Loader from '../components/common/Loader'
 import toast from 'react-hot-toast'
 import { format, isFuture, isPast } from 'date-fns'
@@ -156,13 +156,11 @@ export default function SessionsPage() {
 
       {/* List */}
       {loading ? <Loader /> : sessions.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '48px 16px' }}>
-          <div style={{ fontSize: 40, marginBottom: 12 }}>📅</div>
-          <p style={{ fontWeight: 600, color: 'var(--text)', marginBottom: 6 }}>No sessions here</p>
-          <p style={{ fontSize: 14, color: 'var(--text-muted)' }}>
-            {tab ? `No ${tab} sessions.` : 'Book a session from the dashboard.'}
-          </p>
-        </div>
+        <EmptyState
+          icon="📅"
+          title="No sessions here"
+          subtitle={tab ? `No ${tab} sessions.` : 'Book a session from the dashboard.'}
+        />
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {sessions.map(s => {

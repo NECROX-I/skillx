@@ -102,7 +102,8 @@ export default function ProfilePage() {
 
           <div className="flex gap-2 flex-wrap justify-end">
             {isMe ? (
-              <button onClick={() => nav('/profile/edit')} className="btn btn-white btn-sm">
+              <button onClick={() => nav('/profile/edit')}
+                className="btn btn-primary btn-sm">
                 ✏️ Edit profile
               </button>
             ) : (

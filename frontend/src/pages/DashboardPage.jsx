@@ -4,6 +4,7 @@ import { recommendationApi, sessionApi, userApi } from '../api/index'
 import { useAuthStore } from '../store/authStore'
 import { useNotificationStore } from '../store/notificationStore'
 import { Avatar, StarRating, Modal } from '../components/common/index'
+import EmptyState from '../components/common/EmptyState'
 import Loader from '../components/common/Loader'
 import toast from 'react-hot-toast'
 
@@ -60,7 +61,8 @@ export default function DashboardPage() {
     setBooking(true)
     try {
       await sessionApi.create({ teacherId: sessionModal.user._id, skillId: form.skillId, scheduledAt: form.scheduledAt, notes: form.notes })
-      toast.success('Session request sent!')
+      const skillName = modalSkills.find(s => s.skillId._id === form.skillId)?.skillId?.name || 'session'
+      toast.success(`Request sent to ${sessionModal.user.name} for ${skillName}!`)
       setSessionModal(null); setModalSkills([]); setForm({ skillId: '', scheduledAt: '', notes: '' })
     } catch (err) { toast.error(err.response?.data?.message || 'Failed') }
     finally { setBooking(false) }
@@ -130,15 +132,15 @@ export default function DashboardPage() {
       </div>
 
       {loading ? <Loader /> : matches.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '48px 16px', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 12 }}>
-          <div style={{ fontSize: 40, marginBottom: 12 }}>🔍</div>
-          <p style={{ fontWeight: 600, color: 'var(--text)', marginBottom: 6 }}>No matches yet</p>
-          <p style={{ fontSize: 14, color: 'var(--text-muted)', marginBottom: 16 }}>Add skills you can teach and want to learn.</p>
-          <div style={{ display: 'flex', gap: 8, justifyContent: 'center' }}>
-            <button className="btn btn-primary btn-md" onClick={() => nav('/skills')}>Browse skills</button>
-            <button className="btn btn-white btn-md" onClick={() => nav('/requests')}>Skill board</button>
-          </div>
-        </div>
+        <EmptyState
+          icon="🔍"
+          title="No matches yet"
+          subtitle="Add skills you can teach and want to learn to find people."
+          actions={[
+            <button key="skills" className="btn btn-primary btn-md" onClick={() => nav('/skills')}>Browse skills</button>,
+            <button key="board" className="btn btn-white btn-md" onClick={() => nav('/requests')}>Skill board</button>,
+          ]}
+        />
       ) : (
         <>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
