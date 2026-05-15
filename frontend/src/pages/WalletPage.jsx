@@ -33,10 +33,11 @@ export default function WalletPage() {
     setLoading(true)
     const params = { page: p, limit: 20 }
     if (t) params.type = t
-    creditApi.history(params)
+    creditApi.getWallet(params)
       .then(({ data }) => {
-        const list = data.data.transactions || []
-        const meta = data.meta || {}
+        const payload = data.data || {}
+        const list = payload.transactions || payload.credits || payload.history || []
+        const meta = data.meta || data.data?.meta || {}
         setTxns(prev => append ? [...prev, ...list] : list)
         setHasMore(p < (meta.totalPages || 1))
         setPage(p)

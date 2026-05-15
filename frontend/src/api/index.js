@@ -31,7 +31,8 @@ export const sessionApi = {
 }
 
 export const creditApi = {
-  getWallet: (params) => api.get('/credits/wallet', { params }),
+  getWallet:  (params) => api.get('/credits/wallet', { params }),
+  history:    (params) => api.get('/credits/history', { params }),
 }
 
 export const ratingApi = {
