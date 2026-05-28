@@ -39,7 +39,7 @@ const initSocket = (httpServer) => {
     // Each user joins their own private room for direct notifications
     socket.join(`user:${socket.userId}`);
 
-    // ── Chat ─────────────────────────────────────────────────────────────────
+    //  Chat 
     socket.on('chat:send', (data) => {
       // data = { receiverId, content, tempId }
       // Persist via HTTP API; here we just broadcast instantly for UX
@@ -51,7 +51,7 @@ const initSocket = (httpServer) => {
       });
     });
 
-    // ── Typing indicator ─────────────────────────────────────────────────────
+    //  Typing indicator 
     socket.on('chat:typing', ({ receiverId }) => {
       io.to(`user:${receiverId}`).emit('chat:typing', { senderId: socket.userId });
     });

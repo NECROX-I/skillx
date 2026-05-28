@@ -5,7 +5,7 @@ const { AppError }       = require('../../middleware/errorHandler')
 const { parsePagination, buildMeta } = require('../../utils/paginate')
 const mongoose           = require('mongoose')
 
-// ── Hold credits (deduct from learner on booking) ─────────────────────────────
+// Hold credits (deduct from learner on booking) 
 // Credits leave the learner's wallet immediately but are not yet given to the teacher.
 const holdCredits = async ({ learnerId, amount, sessionId }) => {
   const mongoSession = await mongoose.startSession()
@@ -44,7 +44,6 @@ const holdCredits = async ({ learnerId, amount, sessionId }) => {
   }
 }
 
-// ── Refund held credits back to learner (on cancellation) ─────────────────────
 const refundHeldCredits = async ({ learnerId, amount, sessionId, reason = '' }) => {
   const mongoSession = await mongoose.startSession()
   mongoSession.startTransaction()
@@ -80,7 +79,7 @@ const refundHeldCredits = async ({ learnerId, amount, sessionId, reason = '' }) 
   }
 }
 
-// ── Settle held credits to teacher (on completion) ────────────────────────────
+//  Settle held credits to teacher (on completion)
 // The credit was already deducted from learner on booking — just give it to teacher now.
 const settleCreditsToTeacher = async ({ teacherId, amount, sessionId }) => {
   const mongoSession = await mongoose.startSession()
@@ -117,7 +116,7 @@ const settleCreditsToTeacher = async ({ teacherId, amount, sessionId }) => {
   }
 }
 
-// ── Legacy: direct transfer (kept for admin use) ──────────────────────────────
+//  Legacy: direct transfer (kept for admin use) 
 const transferCredits = async ({ fromUserId, toUserId, amount, sessionId, description }) => {
   if (amount <= 0) throw new AppError('Transfer amount must be positive.', 400)
 
@@ -174,7 +173,7 @@ const transferCredits = async ({ fromUserId, toUserId, amount, sessionId, descri
   }
 }
 
-// ── Wallet ────────────────────────────────────────────────────────────────────
+//  Wallet 
 const getWallet = async (userId, query) => {
   const { page, limit, skip } = parsePagination(query)
 
@@ -200,7 +199,7 @@ const getWallet = async (userId, query) => {
   }
 }
 
-// ── Admin adjust ──────────────────────────────────────────────────────────────
+//  Admin adjust 
 const adminAdjustCredits = async ({ userId, amount, type, description }) => {
   const user = await User.findById(userId)
   if (!user) throw new AppError('User not found.', 404)

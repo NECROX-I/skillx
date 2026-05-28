@@ -7,7 +7,7 @@ const OTP_PREFIX      = 'otp:'
 const ATTEMPTS_PREFIX = 'otp_attempts:'
 const MAX_ATTEMPTS    = 5
 
-// ── In-memory fallback when Redis is unavailable ──────────────────────────────
+//  In-memory fallback when Redis is unavailable 
 const memStore = new Map() // key → { value, expiresAt }
 
 function memSet(key, value, ttlSeconds) {
@@ -30,7 +30,7 @@ function isRedisReady() {
   return redis && redis.status === 'ready'
 }
 
-// ── generateOTP ───────────────────────────────────────────────────────────────
+//  generateOTP 
 const generateOTP = async (identifier) => {
   const otp = crypto.randomInt(100000, 999999).toString()
   const key  = `${OTP_PREFIX}${identifier}`
@@ -48,7 +48,7 @@ const generateOTP = async (identifier) => {
   return otp
 }
 
-// ── verifyOTP ─────────────────────────────────────────────────────────────────
+//  verifyOTP 
 const verifyOTP = async (identifier, submittedOtp) => {
   const key     = `${OTP_PREFIX}${identifier}`
   const attKey  = `${ATTEMPTS_PREFIX}${identifier}`
@@ -89,7 +89,7 @@ const verifyOTP = async (identifier, submittedOtp) => {
   return { valid: true }
 }
 
-// ── invalidateOTP ─────────────────────────────────────────────────────────────
+//  invalidateOTP 
 const invalidateOTP = async (identifier) => {
   const key = `${OTP_PREFIX}${identifier}`
   isRedisReady() ? await redis.del(key) : memDel(key)

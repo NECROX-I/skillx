@@ -15,7 +15,7 @@ const getUserRatings = asyncHandler(async (req, res) => {
 
 module.exports = { submitRating, getUserRatings };
 
-// ── Routes ────────────────────────────────────────────────────────────────────
+//  Routes 
 const express = require('express');
 const router = express.Router();
 const authenticate = require('../../middleware/authenticate');

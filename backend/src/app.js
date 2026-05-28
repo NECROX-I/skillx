@@ -11,7 +11,7 @@ const { errorHandler }         = require('./middleware/errorHandler')
 
 require('./config/passport')
 
-// ── Route imports ─────────────────────────────────────────────────────────────
+//  Route imports 
 const authRoutes               = require('./modules/auth/auth.routes')
 const userRoutes               = require('./modules/users/user.routes')
 const skillRoutes              = require('./modules/skills/skill.routes')
@@ -28,7 +28,7 @@ const app = express()
 // can read the real client IP from X-Forwarded-For
 app.set('trust proxy', 1)
 
-// ── Security headers ──────────────────────────────────────────────────────────
+//  Security headers 
 app.use(helmet({
   contentSecurityPolicy:     NODE_ENV === 'production' ? undefined : false,
   crossOriginEmbedderPolicy: NODE_ENV === 'production',
@@ -39,8 +39,7 @@ if (NODE_ENV === 'production') {
   app.use(helmet.hsts({ maxAge: 31536000, includeSubDomains: true }))
 }
 
-// ── CORS ──────────────────────────────────────────────────────────────────────
-// CLIENT_URL may be a comma-separated list of allowed origins, e.g.:
+
 //   CLIENT_URL=https://skillx.vercel.app,https://www.skillx.app
 const allowedOrigins = CLIENT_URL
   ? CLIENT_URL.split(',').map(u => u.trim()).filter(Boolean)
@@ -58,27 +57,27 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
 }))
 
-// ── Body parsing ──────────────────────────────────────────────────────────────
+//  Body parsing 
 app.use(express.json({ limit: '10kb' }))
 app.use(express.urlencoded({ extended: true, limit: '10kb' }))
 
-// ── Logging ───────────────────────────────────────────────────────────────────
+//  Logging 
 if (NODE_ENV !== 'test') {
   app.use(morgan(NODE_ENV === 'development' ? 'dev' : 'combined'))
 }
 
-// ── Rate limiter ──────────────────────────────────────────────────────────────
+//  Rate limiter 
 app.use('/api', globalLimiter)
 
-// ── Passport ──────────────────────────────────────────────────────────────────
+//  Passport 
 app.use(passport.initialize())
 
-// ── Health check ──────────────────────────────────────────────────────────────
+//  Health check 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString(), env: NODE_ENV })
 })
 
-// ── API routes ────────────────────────────────────────────────────────────────
+//  API routes 
 app.use('/api/auth',            authRoutes)
 app.use('/api/users',           userRoutes)
 app.use('/api/skills',          skillRoutes)
@@ -89,12 +88,12 @@ app.use('/api/requests',        requestController.router)
 app.use('/api/recommendations', recommendationController.router)
 app.use('/api/chat',            chatController.router)
 
-// ── 404 ───────────────────────────────────────────────────────────────────────
+//  404 error
 app.use((req, res) => {
   res.status(404).json({ success: false, message: `Route ${req.method} ${req.path} not found.` })
 })
 
-// ── Error handler ─────────────────────────────────────────────────────────────
+//  Error handler 
 app.use(errorHandler)
 
 module.exports = app
