@@ -6,27 +6,27 @@ import Loader from '../components/common/Loader'
 import { format } from 'date-fns'
 
 const TYPE_META = {
-  earn:    { label: 'Earned',    color: '#16a34a', bg: '#dcfce7', sign: '+' },
-  spend:   { label: 'Spent',     color: '#dc2626', bg: '#fee2e2', sign: '-' },
-  hold:    { label: 'On hold',   color: '#b45309', bg: '#fef9c3', sign: '-' },
-  refund:  { label: 'Refunded',  color: '#2563eb', bg: '#dbeafe', sign: '+' },
-  bonus:   { label: 'Bonus',     color: '#7c3aed', bg: '#ede9fe', sign: '+' },
-  settle:  { label: 'Settled',   color: '#16a34a', bg: '#dcfce7', sign: '+' },
+  earn: { label: 'Earned', color: '#16a34a', bg: '#dcfce7', sign: '+' },
+  spend: { label: 'Spent', color: '#dc2626', bg: '#fee2e2', sign: '-' },
+  hold: { label: 'On hold', color: '#b45309', bg: '#fef9c3', sign: '-' },
+  refund: { label: 'Refunded', color: '#2563eb', bg: '#dbeafe', sign: '+' },
+  bonus: { label: 'Bonus', color: '#7c3aed', bg: '#ede9fe', sign: '+' },
+  settle: { label: 'Settled', color: '#16a34a', bg: '#dcfce7', sign: '+' },
 }
 
 const TABS = [
   { val: '', label: 'All' },
-  { val: 'earn',   label: 'Earned' },
-  { val: 'spend',  label: 'Spent' },
+  { val: 'earn', label: 'Earned' },
+  { val: 'spend', label: 'Spent' },
   { val: 'refund', label: 'Refunded' },
 ]
 
 export default function WalletPage() {
   const { user } = useAuthStore()
-  const [txns, setTxns]     = useState([])
-  const [tab, setTab]       = useState('')
+  const [txns, setTxns] = useState([])
+  const [tab, setTab] = useState('')
   const [loading, setLoading] = useState(true)
-  const [page, setPage]     = useState(1)
+  const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(false)
 
   const load = (t = tab, p = 1, append = false) => {
@@ -42,7 +42,7 @@ export default function WalletPage() {
         setHasMore(p < (meta.totalPages || 1))
         setPage(p)
       })
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => setLoading(false))
   }
 
@@ -59,15 +59,18 @@ export default function WalletPage() {
       </div>
 
       {/* Balance card */}
-      <div style={{
-        background: 'var(--brand)',
-        borderRadius: 16,
-        padding: '24px 20px',
-        marginBottom: 20,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}>
+      <div
+        style={{
+          background: '#113481', // blue-600
+          color: '#3147c0',
+          borderRadius: 16,
+          padding: '24px 20px',
+          marginBottom: 20,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
         <div>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 13, margin: '0 0 4px' }}>Available credits</p>
           <p style={{ color: '#fff', fontSize: 40, fontWeight: 800, margin: 0, lineHeight: 1 }}>
@@ -144,8 +147,8 @@ export default function WalletPage() {
                     fontSize: 18,
                   }}>
                     {tx.type === 'earn' || tx.type === 'settle' ? '↑' :
-                     tx.type === 'spend' || tx.type === 'hold'  ? '↓' :
-                     tx.type === 'refund' ? '↩' : '🪙'}
+                      tx.type === 'spend' || tx.type === 'hold' ? '↓' :
+                        tx.type === 'refund' ? '↩' : '🪙'}
                   </div>
 
                   {/* Description */}

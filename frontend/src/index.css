@@ -89,7 +89,7 @@ html.dark {
   }
   .btn-primary {
     @apply btn active:scale-95 shadow-sm;
-    background: var(--brand);
+    background: #182f58;
     color: #fff;
   }
   .btn-primary:hover  { background: var(--brand-hover); }
