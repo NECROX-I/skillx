@@ -19,46 +19,40 @@ Teach what you know. Learn what you love. A credit-based skill exchange where ev
 - 🌙 Dark / light mode
 - 🔔 In-app notifications (session events, messages)
 
+## DevOps & Deployment
+
+- **Frontend** — Vercel (auto-deploy on push to main)
+- **Backend** — Render (triggered via GitHub Actions CI/CD pipeline)
+- **Containerized** — Docker + Nginx for local development
+- **Monitoring** — Live health checks via uptime monitor
+- **Secrets** — Managed via GitHub Actions secrets, documented in `.env.example`
+
 ## Quick Start
 
 ```bash
 # Backend
 cd backend && npm install
 cp .env.example .env   # fill in values
-npm run seed           # seeds 213 skills
+npm run seed           # seeds 338 skills
 npm run dev            # http://localhost:5000
 
 # Frontend
 cd frontend && npm install
-cp .env.example .env   # set VITE_SOCKET_URL
+cp .env.example .env   # set VITE_API_URL and VITE_SOCKET_URL
 npm run dev            # http://localhost:5173
 ```
 
-## Deploy
+## Local Docker Setup
 
-**Backend → [Railway](https://railway.app)**  
-**Frontend → [Vercel](https://vercel.com)**
-
-Required env vars on Railway:
-```
-NODE_ENV=production
-CLIENT_URL=https://your-app.vercel.app
-MONGODB_URI=mongodb+srv://...
-JWT_SECRET=<32+ random chars>
-JWT_REFRESH_SECRET=<different 32+ chars>
+```bash
+docker compose up --build
 ```
 
-Required env vars on Vercel:
-```
-VITE_API_URL=https://your-app.railway.app/api
-VITE_SOCKET_URL=https://your-app.railway.app
-```
+Frontend → http://localhost  
+Backend → http://localhost/api
+
+## Environment Variables
 
 See `backend/.env.example` and `frontend/.env.example` for full list.
 
-## First Account
-
-1. Visit `/signup` — register with any email
-2. If email not configured, OTP prints to **backend terminal**
-3. Complete onboarding — select skills to teach and learn
-4. Dashboard shows matched users instantly
+Required backend vars:
