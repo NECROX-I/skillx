@@ -15,7 +15,7 @@ const adminAdjust = asyncHandler(async (req, res) => {
 
 module.exports = { getWallet, adminAdjust };
 
-// ── Routes ────────────────────────────────────────────────────────────────────
+//  Routes 
 // Exported inline to keep small modules compact
 const express = require('express');
 const router = express.Router();

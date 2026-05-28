@@ -23,7 +23,6 @@ const { MONGODB_URI } = require('../../src/config/env')
 // Digital Marketer: Social Media → SEO → Google Ads → Analytics → Performance Marketing
 
 const SKILLS = [
-  // ── Programming & Tech (existing) ────────────────────────────────────────
   { name: 'JavaScript',            category: 'Programming' },
   { name: 'Python',                category: 'Programming' },
   { name: 'React',                 category: 'Programming' },
@@ -64,7 +63,6 @@ const SKILLS = [
   { name: 'Power BI',              category: 'Programming' },
   { name: 'Tableau',               category: 'Programming' },
 
-  // ── Programming & Tech (new — India 2026 job-ready) ──────────────────────
   { name: 'Spring Boot',           category: 'Programming' },
   { name: 'Azure',                 category: 'Programming' },
   { name: 'Google Cloud (GCP)',    category: 'Programming' },
@@ -88,7 +86,6 @@ const SKILLS = [
   { name: 'Tailwind CSS',          category: 'Programming' },
   { name: 'Elasticsearch',         category: 'Programming' },
 
-  // ── AI & No-Code (new category — highest demand 2026) ────────────────────
   { name: 'Prompt Engineering',    category: 'AI & No-Code' },
   { name: 'LangChain',             category: 'AI & No-Code' },
   { name: 'AI Agents',             category: 'AI & No-Code' },
@@ -105,7 +102,6 @@ const SKILLS = [
   { name: 'Airtable',              category: 'AI & No-Code' },
   { name: 'v0 / Lovable',          category: 'AI & No-Code' },
 
-  // ── Design (existing) ─────────────────────────────────────────────────────
   { name: 'Figma',                 category: 'Design' },
   { name: 'UI/UX Design',          category: 'Design' },
   { name: 'Adobe Illustrator',     category: 'Design' },
@@ -124,7 +120,6 @@ const SKILLS = [
   { name: 'Blender 3D',            category: 'Design' },
   { name: 'Illustration',          category: 'Design' },
 
-  // ── Design (new) ─────────────────────────────────────────────────────────
   { name: 'Spline 3D',             category: 'Design' },
   { name: 'Rive Animations',       category: 'Design' },
   { name: 'User Research',         category: 'Design' },
@@ -134,7 +129,6 @@ const SKILLS = [
   { name: 'Thumbnail Design',      category: 'Design' },
   { name: 'Reels / Short Video',   category: 'Design' },
 
-  // ── Language (existing) ──────────────────────────────────────────────────
   { name: 'Spanish',               category: 'Language' },
   { name: 'Mandarin Chinese',      category: 'Language' },
   { name: 'French',                category: 'Language' },
@@ -154,7 +148,6 @@ const SKILLS = [
   { name: 'Latin',                 category: 'Language' },
   { name: 'Greek',                 category: 'Language' },
 
-  // ── Language (new — Indian languages + English) ───────────────────────────
   { name: 'English Communication', category: 'Language' },
   { name: 'Business English',      category: 'Language' },
   { name: 'IELTS / TOEFL Prep',    category: 'Language' },
@@ -168,7 +161,6 @@ const SKILLS = [
   { name: 'Punjabi',               category: 'Language' },
   { name: 'Sanskrit',              category: 'Language' },
 
-  // ── Music (existing) ─────────────────────────────────────────────────────
   { name: 'Guitar',                category: 'Music' },
   { name: 'Piano',                 category: 'Music' },
   { name: 'Drums',                 category: 'Music' },
@@ -188,14 +180,12 @@ const SKILLS = [
   { name: 'Ableton Live',          category: 'Music' },
   { name: 'FL Studio',             category: 'Music' },
 
-  // ── Music (new) ──────────────────────────────────────────────────────────
   { name: 'Tabla',                 category: 'Music' },
   { name: 'Sitar',                 category: 'Music' },
   { name: 'Hindustani Vocals',     category: 'Music' },
   { name: 'Carnatic Music',        category: 'Music' },
   { name: 'Keyboard / Synthesizer', category: 'Music' },
 
-  // ── Business (existing) ──────────────────────────────────────────────────
   { name: 'Public Speaking',       category: 'Business' },
   { name: 'Excel / Spreadsheets',  category: 'Business' },
   { name: 'Project Management',    category: 'Business' },
@@ -209,7 +199,6 @@ const SKILLS = [
   { name: 'Supply Chain',          category: 'Business' },
   { name: 'Operations',            category: 'Business' },
 
-  // ── Business (new) ───────────────────────────────────────────────────────
   { name: 'Agile & Scrum',         category: 'Business' },
   { name: 'Tally Prime',           category: 'Business' },
   { name: 'SAP Basics',            category: 'Business' },
@@ -219,7 +208,6 @@ const SKILLS = [
   { name: 'OKRs & Goal Setting',   category: 'Business' },
   { name: 'B2B Sales',             category: 'Business' },
 
-  // ── Marketing (existing) ─────────────────────────────────────────────────
   { name: 'Digital Marketing',     category: 'Marketing' },
   { name: 'SEO',                   category: 'Marketing' },
   { name: 'Content Marketing',     category: 'Marketing' },
@@ -233,7 +221,6 @@ const SKILLS = [
   { name: 'Analytics',             category: 'Marketing' },
   { name: 'Affiliate Marketing',   category: 'Marketing' },
 
-  // ── Marketing (new) ──────────────────────────────────────────────────────
   { name: 'Performance Marketing', category: 'Marketing' },
   { name: 'YouTube Marketing',     category: 'Marketing' },
   { name: 'Instagram Marketing',   category: 'Marketing' },
@@ -246,7 +233,6 @@ const SKILLS = [
   { name: 'E-commerce Marketing',  category: 'Marketing' },
   { name: 'Google Analytics 4',    category: 'Marketing' },
 
-  // ── Finance (existing) ───────────────────────────────────────────────────
   { name: 'Personal Finance',      category: 'Finance' },
   { name: 'Stock Trading',         category: 'Finance' },
   { name: 'Crypto & Web3',         category: 'Finance' },
@@ -259,7 +245,6 @@ const SKILLS = [
   { name: 'Options Trading',       category: 'Finance' },
   { name: 'Forex Trading',         category: 'Finance' },
 
-  // ── Finance (new — India specific) ───────────────────────────────────────
   { name: 'GST & Taxation',        category: 'Finance' },
   { name: 'Mutual Funds & SIP',    category: 'Finance' },
   { name: 'CA Foundation Prep',    category: 'Finance' },
@@ -268,7 +253,6 @@ const SKILLS = [
   { name: 'Insurance Planning',    category: 'Finance' },
   { name: 'Zerodha / Trading Platforms', category: 'Finance' },
 
-  // ── Arts & Crafts (existing) ─────────────────────────────────────────────
   { name: 'Drawing',               category: 'Arts & Crafts' },
   { name: 'Painting',              category: 'Arts & Crafts' },
   { name: 'Watercolor',            category: 'Arts & Crafts' },
@@ -288,15 +272,13 @@ const SKILLS = [
   { name: 'Comic Art',             category: 'Arts & Crafts' },
   { name: 'Manga Drawing',         category: 'Arts & Crafts' },
 
-  // ── Arts & Crafts (new) ──────────────────────────────────────────────────
   { name: 'Mehndi / Henna Art',    category: 'Arts & Crafts' },
   { name: 'Rangoli',               category: 'Arts & Crafts' },
   { name: 'Embroidery',            category: 'Arts & Crafts' },
   { name: 'Resin Art',             category: 'Arts & Crafts' },
   { name: 'Street Photography',    category: 'Arts & Crafts' },
   { name: 'Portrait Photography',  category: 'Arts & Crafts' },
-
-  // ── Sports & Fitness (existing) ──────────────────────────────────────────
+ 
   { name: 'Yoga',                  category: 'Sports & Fitness' },
   { name: 'Meditation',            category: 'Sports & Fitness' },
   { name: 'Weight Training',       category: 'Sports & Fitness' },
@@ -321,7 +303,6 @@ const SKILLS = [
   { name: 'Surfing',               category: 'Sports & Fitness' },
   { name: 'Skateboarding',         category: 'Sports & Fitness' },
 
-  // ── Sports & Fitness (new) ───────────────────────────────────────────────
   { name: 'Kabaddi',               category: 'Sports & Fitness' },
   { name: 'Kho-Kho',               category: 'Sports & Fitness' },
   { name: 'Zumba',                 category: 'Sports & Fitness' },
@@ -331,7 +312,6 @@ const SKILLS = [
   { name: 'Kathak',                category: 'Sports & Fitness' },
   { name: 'Bharatanatyam',         category: 'Sports & Fitness' },
 
-  // ── Cooking (existing) ───────────────────────────────────────────────────
   { name: 'Baking',                category: 'Cooking' },
   { name: 'Pastry & Desserts',     category: 'Cooking' },
   { name: 'Bread Making',          category: 'Cooking' },
@@ -348,14 +328,12 @@ const SKILLS = [
   { name: 'Knife Skills',          category: 'Cooking' },
   { name: 'Meal Prepping',         category: 'Cooking' },
 
-  // ── Cooking (new) ────────────────────────────────────────────────────────
   { name: 'North Indian Cooking',  category: 'Cooking' },
   { name: 'South Indian Cooking',  category: 'Cooking' },
   { name: 'Street Food Recipes',   category: 'Cooking' },
   { name: 'Fermentation & Pickling', category: 'Cooking' },
   { name: 'Air Fryer Cooking',     category: 'Cooking' },
 
-  // ── Science (existing) ───────────────────────────────────────────────────
   { name: 'Mathematics',           category: 'Science' },
   { name: 'Statistics',            category: 'Science' },
   { name: 'Physics',               category: 'Science' },
@@ -371,12 +349,10 @@ const SKILLS = [
   { name: 'Arduino',               category: 'Science' },
   { name: 'Raspberry Pi',          category: 'Science' },
 
-  // ── Science (new) ────────────────────────────────────────────────────────
   { name: 'Quantum Computing',     category: 'Science' },
   { name: 'Biotechnology',         category: 'Science' },
   { name: 'Environmental Science', category: 'Science' },
-
-  // ── Career & Exams (new category — huge in India) ────────────────────────
+ 
   { name: 'UPSC Preparation',      category: 'Career & Exams' },
   { name: 'GATE Preparation',      category: 'Career & Exams' },
   { name: 'JEE / NEET Prep',       category: 'Career & Exams' },
@@ -390,7 +366,6 @@ const SKILLS = [
   { name: 'Freelancing',           category: 'Career & Exams' },
   { name: 'Portfolio Building',    category: 'Career & Exams' },
 
-  // ── Other (existing) ─────────────────────────────────────────────────────
   { name: 'Chess',                 category: 'Other' },
   { name: 'Poker',                 category: 'Other' },
   { name: 'Speed Reading',         category: 'Other' },
@@ -406,7 +381,6 @@ const SKILLS = [
   { name: 'Home Repair & DIY',     category: 'Other' },
   { name: 'Car Maintenance',       category: 'Other' },
 
-  // ── Other (new) ──────────────────────────────────────────────────────────
   { name: 'Vastu & Interior Tips', category: 'Other' },
   { name: 'Event Planning',        category: 'Other' },
   { name: 'Pet Training',          category: 'Other' },

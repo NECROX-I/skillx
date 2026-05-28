@@ -22,7 +22,7 @@ const upsertOAuthUser = async ({ oauthId, oauthProvider, email, name, avatarUrl 
   return user
 }
 
-// ── Google ────────────────────────────────────────────────────────────────────
+//  Google 
 if (env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET) {
   passport.use(new GoogleStrategy(
     {
@@ -45,7 +45,7 @@ if (env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET) {
   ))
 }
 
-// ── GitHub ────────────────────────────────────────────────────────────────────
+//  GitHub 
 // GitHub users can set their email to private. 
 // When they do, profile.emails is empty and we have to fetch via API using the access token.
 if (env.GITHUB_CLIENT_ID && env.GITHUB_CLIENT_SECRET) {

@@ -6,7 +6,7 @@ const authenticate = require('../../middleware/authenticate')
 
 const router = express.Router()
 
-// ── DEV ONLY — instant login without OAuth ────────────────────────────────────
+//  DEV ONLY — instant login without OAuth 
 // Visit http://localhost:5000/api/auth/dev-login in your browser to log in
 // Automatically disabled in production — safe to leave in codebase
 if (process.env.NODE_ENV !== 'production') {
@@ -37,7 +37,7 @@ if (process.env.NODE_ENV !== 'production') {
   })
 }
 
-// ── Google ────────────────────────────────────────────────────────────────────
+//  Google 
 router.get('/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
 )
@@ -46,7 +46,7 @@ router.get('/google/callback',
   controller.oauthCallback
 )
 
-// ── GitHub ────────────────────────────────────────────────────────────────────
+//  GitHub 
 router.get('/github',
   passport.authenticate('github', { scope: ['user:email'] })
 )
@@ -55,7 +55,7 @@ router.get('/github/callback',
   controller.oauthCallback
 )
 
-// ── Token management ──────────────────────────────────────────────────────────
+//  Token management 
 router.post('/refresh', controller.refresh)
 router.post('/logout',  authenticate, controller.logout)
 router.get('/me',       authenticate, controller.getMe)

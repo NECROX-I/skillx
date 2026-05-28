@@ -3,7 +3,7 @@ const User         = require('../../models/User')
 const jwtService   = require('../../services/jwtService')
 const { AppError } = require('../../middleware/errorHandler')
 
-// ── Refresh token ─────────────────────────────────────────────────────────────
+//  Refresh token 
 const refreshToken = async (token) => {
   let decoded
   try {
@@ -16,10 +16,10 @@ const refreshToken = async (token) => {
   return jwtService.issueTokenPair(user)
 }
 
-// ── Logout — no blacklist needed, frontend clears token ───────────────────────
+//  Logout — no blacklist needed, frontend clears token 
 const logout = async () => {}
 
-// ── OAuth ─────────────────────────────────────────────────────────────────────
+//  OAuth 
 const oauthCallback = async (user) => {
   const tokens = jwtService.issueTokenPair(user)
   return { user: user.toSafeObject(), ...tokens }

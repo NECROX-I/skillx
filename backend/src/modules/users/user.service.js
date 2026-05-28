@@ -82,7 +82,7 @@ const removeUserSkill = async (userId, userSkillId) => {
   return { message: 'Skill removed.' }
 }
 
-// ── Search users by @username or name ─────────────────────────────────────────
+//  Search users by @username or name 
 const searchUsers = async (query, currentUserId) => {
   const q = (query.q || '').trim()
   if (!q || q.length < 2) return { users: [] }

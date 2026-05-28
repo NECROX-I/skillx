@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 
 const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id) && /^[a-f\d]{24}$/i.test(String(id))
 
-// ── Send ──────────────────────────────────────────────────────────────────────
+//  Send 
 const sendMessage = async (senderId, { receiverId, content }) => {
   const receiver = await User.findById(receiverId)
   if (!receiver || !receiver.isActive) throw new AppError('Recipient not found.', 404)
@@ -16,7 +16,7 @@ const sendMessage = async (senderId, { receiverId, content }) => {
   return Message.create({ senderId, receiverId, content })
 }
 
-// ── Delete single message ─────────────────────────────────────────────────────
+//  Delete single message 
 const deleteMessage = async (userId, messageId) => {
   // Guard against temp IDs like "tmp_1234567"
   if (!isValidObjectId(messageId))
@@ -51,7 +51,7 @@ const deleteMessage = async (userId, messageId) => {
   return { deleted: true, hardDeleted: false }
 }
 
-// ── Delete entire conversation ────────────────────────────────────────────────
+//  Delete entire conversation 
 const deleteConversation = async (userId, otherId) => {
   const uid = new mongoose.Types.ObjectId(userId)
   await Message.updateMany(
@@ -68,7 +68,7 @@ const deleteConversation = async (userId, otherId) => {
   return { deleted: true }
 }
 
-// ── Get conversation ──────────────────────────────────────────────────────────
+//  Get conversation 
 const getConversation = async (userId, otherId, query) => {
   const { page, limit, skip } = parsePagination(query)
   const uid = new mongoose.Types.ObjectId(userId)
@@ -90,7 +90,7 @@ const getConversation = async (userId, otherId, query) => {
   return { messages: messages.reverse(), meta: buildMeta({ page, limit, total }) }
 }
 
-// ── Conversation list ─────────────────────────────────────────────────────────
+//  Conversation list 
 const getConversationList = async (userId) => {
   const uid = new mongoose.Types.ObjectId(userId)
   const messages = await Message.aggregate([
@@ -126,7 +126,7 @@ const getConversationList = async (userId) => {
   return populated.filter(m => m.partner)
 }
 
-// ── Unread count ──────────────────────────────────────────────────────────────
+//  Unread count 
 const getUnreadCount = async (userId) => {
   const uid   = new mongoose.Types.ObjectId(userId)
   const count = await Message.countDocuments({

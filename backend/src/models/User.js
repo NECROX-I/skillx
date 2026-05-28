@@ -62,18 +62,18 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-// ── Indexes ───────────────────────────────────────────────────────────────────
+//  Indexes 
 userSchema.index({ email: 1 },    { unique: true, sparse: true })
 userSchema.index({ phone: 1 },    { unique: true, sparse: true })
 userSchema.index({ username: 1 }, { unique: true, sparse: true })
 userSchema.index({ oauthProvider: 1, oauthId: 1 })
 
-// ── Virtual ───────────────────────────────────────────────────────────────────
+//  Virtual 
 userSchema.virtual('isLocked').get(function () {
   return !!(this.lockUntil && this.lockUntil > Date.now())
 })
 
-// ── Auto-generate username before first save if missing ───────────────────────
+//  Auto-generate username before first save if missing 
 userSchema.pre('save', async function (next) {
   // Hash password
   if (this.isModified('passwordHash') && this.passwordHash && !this.passwordHash.startsWith('$2')) {
@@ -103,7 +103,7 @@ userSchema.pre('save', async function (next) {
   next()
 })
 
-// ── Instance methods ──────────────────────────────────────────────────────────
+// Instance methods 
 userSchema.methods.comparePassword = async function (plaintext) {
   return bcrypt.compare(plaintext, this.passwordHash)
 }

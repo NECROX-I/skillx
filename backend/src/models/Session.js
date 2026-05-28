@@ -17,7 +17,7 @@ const sessionSchema = new mongoose.Schema(
     durationMins: { type: Number, default: 60, min: 15, max: 240 },
     notes:        { type: String, maxlength: 500, default: '' },
 
-    // ── Meeting link ───────────────────────────────────────────────────────
+    //  Meeting link 
     // Platform is chosen by teacher when accepting.
     // 'jitsi'  → auto-generated free link (no account needed)
     // 'zoom'   → teacher pastes their Zoom link
@@ -31,16 +31,16 @@ const sessionSchema = new mongoose.Schema(
     },
     videoLink: { type: String, default: null },
 
-    // ── Credits ────────────────────────────────────────────────────────────
+    //  Credits 
     creditsAmount:   { type: Number, default: 1, min: 1 },
     creditsEligible: { type: Boolean, default: true },
     creditsHeld:     { type: Boolean, default: false },
 
-    // ── Confirmation ───────────────────────────────────────────────────────
+    //  Confirmation 
     teacherConfirmed: { type: Boolean, default: false },
     learnerConfirmed: { type: Boolean, default: false },
 
-    // ── Cancellation ───────────────────────────────────────────────────────
+    //  Cancellation 
     cancelledBy:  { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null },
     cancelReason: { type: String, default: '' },
 
