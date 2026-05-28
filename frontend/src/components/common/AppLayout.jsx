@@ -255,9 +255,9 @@ export default function AppLayout() {
         <NavLink to="/dashboard" className="flex items-center gap-2.5 px-4 h-14 flex-shrink-0"
           style={{ borderBottom: '1px solid var(--border)', textDecoration: 'none' }}>
           <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'var(--brand)' }}>
-            <span className="text-white font-bold text-xs">S</span>
+            <span className="text-white font-bold text-md">S</span>
           </div>
-          <span className="font-bold" style={{ color: 'var(--text)' }}>SkillX</span>
+          <span className="font-bold text-gray-300 text-lg" style={{ color: 'var(--text)' }}>SkillX</span>
         </NavLink>
 
         {/* Search */}

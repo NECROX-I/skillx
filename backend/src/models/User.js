@@ -18,18 +18,18 @@ const userSchema = new mongoose.Schema(
       minlength: [3,  'Username must be at least 3 characters'],
       maxlength: [30, 'Username cannot exceed 30 characters'],
       match:     [/^[a-z0-9_]+$/, 'Username can only contain letters, numbers and underscores'],
-      sparse:    true,
+      // sparse:    true,
     },
     email: {
       type:      String,
-      sparse:    true,
+      // sparse:    true,
       lowercase: true,
       trim:      true,
       match:     [/^\S+@\S+\.\S+$/, 'Invalid email address'],
     },
     phone: {
       type:   String,
-      sparse: true,
+      // sparse: true,
       trim:   true,
     },
     passwordHash: {
@@ -137,4 +137,4 @@ userSchema.methods.updateRating = async function (newScore) {
   return this.save()
 }
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.models.User || mongoose.model('User', userSchema)
