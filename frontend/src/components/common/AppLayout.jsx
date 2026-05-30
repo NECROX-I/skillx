@@ -229,7 +229,7 @@ export default function AppLayout() {
   const handleLogout = async () => {
     await logout()
     toast.success('Signed out')
-    navigate('/login')
+    navigate('/')
   }
 
   const getBadge = key => {
