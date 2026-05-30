@@ -26,7 +26,7 @@ export default function LandingPage() {
       <div className="max-w-2xl mx-auto px-6 pt-20 pb-14 text-center">
         <div className="inline-flex items-center gap-2 border border-gray-700 text-xs px-3 py-1.5 mb-8 text-gray-500 tracking-widest uppercase">
           <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-          100% credit-based · no money needed
+          100% credit-based 
         </div>
         <h1 className="hero-title text-4xl sm:text-5xl font-bold text-gray-200 leading-tight mb-0">
           Teach what you know.<br />
